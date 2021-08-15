@@ -595,7 +595,7 @@ const game = {
 	},
 	
 	advance(deltaTime, callback = core.getNextFrame) {
-		this.tempOffline = (deltaTime > 60) && !this.offline
+		this.tempOffline = (deltaTime > 60000) && !this.offline
 		if (this.tempOffline) this.offline = true
 		if (game.dev && game.dev.boost) deltaTime *= game.dev.boost
 		
@@ -623,12 +623,12 @@ const game = {
 
 		if (this.offline) {
 			gui.dvOffline.classList.toggle("hidden", false)
-			this.timeLeft = deltaTime / 1000
+			this.timeLeft = deltaTime / 1
 //			gui.dvOfflineCountdown.innerText = "TST"+shortTimeString(deltaTime / 1000)
 		}
 			
 		core.setTimeout(() => {
-			this.timeStep(deltaTime / 1000, () => {
+			this.timeStep(deltaTime / 1, () => {
 					
 				if (this.tempOffline && this.offline) {
 					this.offline = false
