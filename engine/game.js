@@ -595,7 +595,7 @@ const game = {
 	},
 	
 	advance(deltaTime, callback = core.getNextFrame) {
-		this.tempOffline = (deltaTime > 60000) && !this.offline
+		this.tempOffline = (deltaTime > 60) && !this.offline
 		if (this.tempOffline) this.offline = true
 		if (game.dev && game.dev.boost) deltaTime *= game.dev.boost
 		
